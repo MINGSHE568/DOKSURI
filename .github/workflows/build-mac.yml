@@ -1,0 +1,54 @@
+# =====================================================================
+# DOKSURI macOS 云构建（无需本地 Mac）
+# 用法：把本项目推到 GitHub → Actions 页选择 build-mac → Run workflow
+#       构建完成后在该次运行页面下载 DOKSURI3A-macos 产物（.app 与 .dmg）
+# 说明：macos-14 = Apple Silicon(M 系列) 原生 arm64 包；
+#       如需 Intel 包，把 runs-on 改为 macos-13 再跑一次
+# 注意：本仓库需包含 _models/（内置基础模型）；单个文件 >100MB 时需用 Git LFS
+# =====================================================================
+name: build-mac
+
+on:
+  workflow_dispatch:        # 手动触发
+  push:
+    tags: ["v*"]            # 推送 v* 标签时自动触发
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装依赖
+        run: |
+          python -m pip install -U pip wheel
+          pip install -r requirements.txt pyinstaller
+
+      - name: 生成 macOS 图标
+        run: |
+          python -c "from PIL import Image; im=Image.open('doksuri.ico').convert('RGBA'); im.resize((1024,1024), Image.LANCZOS).save('doksuri.png')"
+          ICONSET=doksuri.iconset; mkdir -p $ICONSET
+          for s in 16 32 64 128 256 512; do
+            sips -z $s $s doksuri.png --out $ICONSET/icon_${s}x${s}.png
+            d=$((s*2)); sips -z $d $d doksuri.png --out $ICONSET/icon_${s}x${s}@2x.png
+          done
+          iconutil -c icns $ICONSET -o doksuri.icns && rm -rf $ICONSET
+
+      - name: 打包 DOKSURI3A.app
+        run: pyinstaller --clean --noconfirm doksuri_mac.spec
+
+      - name: 生成 DMG 安装包
+        run: bash make_dmg.sh
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: DOKSURI3A-macos-${{ github.run_number }}
+          path: |
+            dist/DOKSURI3A-*.dmg
+            dist/DOKSURI3A.app
+          if-no-files-found: error

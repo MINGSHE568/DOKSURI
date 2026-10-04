@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv-mac/
+
+# PyInstaller 构建产物
+build/
+dist/
+
+# 运行时生成（数据目录/历史库/日志）
+history.db
+*.log
+
+# macOS 打包时生成的图标（build.sh 由 doksuri.ico 自动重新生成）
+doksuri.icns
+doksuri.png
+doksuri.iconset/
+
+# 测试临时文件
+_smoke_*.py
+_mac_hist_test.py
+_test_*.py
+
+# 系统杂项
+.DS_Store
+Thumbs.db

@@ -1,0 +1,100 @@
+[
+ {
+  "from_code": "de",
+  "to_code": "en",
+  "version": "1.3",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-de_en-1_3.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "de",
+  "version": "1.3",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_de-1_3.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "es",
+  "version": "1.0",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_es-1_0.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "fr",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_fr-1_9.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "ja",
+  "version": "1.1",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_ja-1_1.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "ko",
+  "version": "1.1",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_ko-1_1.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "ru",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_ru-1_9.argosmodel"
+ },
+ {
+  "from_code": "en",
+  "to_code": "zh",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-en_zh-1_9.argosmodel"
+ },
+ {
+  "from_code": "es",
+  "to_code": "en",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-es_en-1_9.argosmodel"
+ },
+ {
+  "from_code": "fr",
+  "to_code": "en",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-fr_en-1_9.argosmodel"
+ },
+ {
+  "from_code": "ja",
+  "to_code": "en",
+  "version": "1.1",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-ja_en-1_1.argosmodel"
+ },
+ {
+  "from_code": "ko",
+  "to_code": "en",
+  "version": "1.1",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-ko_en-1_1.argosmodel"
+ },
+ {
+  "from_code": "ru",
+  "to_code": "en",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-ru_en-1_9.argosmodel"
+ },
+ {
+  "from_code": "zh",
+  "to_code": "en",
+  "version": "1.9",
+  "size": null,
+  "url": "https://argos-net.com/v1/translate-zh_en-1_9.argosmodel"
+ }
+]

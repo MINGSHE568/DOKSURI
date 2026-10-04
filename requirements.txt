@@ -1,0 +1,41 @@
+# DOKSURI 离线翻译 - 依赖清单（Windows / macOS 双平台）
+# Python 3.10+（推荐 3.12）。安装：pip install -r requirements.txt
+#
+# 平台说明：
+# - Apple Silicon（M1/M2/M3/M4）：paddlepaddle>=3.0.0 提供 macOS arm64 轮子；
+# - Intel（x86_64）Mac：paddlepaddle 需用 2.6.x（见下方环境标记）；
+#   若 torch/ctranslate2 在老版本 Intel mac 上无对应轮子，
+#   可降级：torch==2.2.2 + ctranslate2==4.5.0；
+# - 全部推理本地完成，依赖装好后基础功能完全离线可用。
+
+# ---- GUI ----
+PyQt6==6.11.0
+PyQt6-Qt6==6.11.2
+PyQt6-sip==13.12.0
+
+# ---- 翻译引擎（Argos Translate 运行时）----
+argostranslate==1.11.0
+ctranslate2==4.8.2
+sentencepiece==0.2.2
+stanza==1.10.1
+torch==2.14.1
+langdetect==1.0.9
+
+# ---- OCR 引擎（PaddleOCR）----
+paddlepaddle==3.0.0; sys_platform == "win32"
+paddlepaddle==3.0.0; sys_platform == "darwin" and platform_machine == "arm64"
+paddlepaddle==2.6.2; sys_platform == "darwin" and platform_machine == "x86_64"
+paddleocr==2.7.3
+
+# numpy 必须钉在 1.26.4：paddleocr 2.7.3 依赖链（imgaug 0.4.0 等）不兼容 numpy 2，
+# 且部分依赖安装时会静默把 numpy 升到 2.x，需保持此钉版
+numpy==1.26.4
+
+# ---- 文档解析与导出 ----
+PyMuPDF==1.28.2
+python-docx==1.2.0
+openpyxl==3.1.5
+Pillow==12.3.0
+
+# ---- 打包（可选，仅开发期需要）----
+pyinstaller==6.22.3; sys_platform == "win32"
